@@ -68,7 +68,7 @@ json.dump(mor, open(OUT/"moran.json","w"), ensure_ascii=False, indent=1)
 plt.rcParams.update({"font.size": 12, "axes.titlesize": 13})
 fig, axes = plt.subplots(1, 2, figsize=(11, 7.2))
 main = g.cx[119.9:122.1, 21.8:25.4]
-for ax, col, title, cmap, vmin, vmax in [(axes[0], "exp", "只看房屋組成時的期望繼承占比", "Oranges", 0.03, 0.35), (axes[1], "u", "扣除房屋組成後的地方效果（繼承勝算相對一般鄉鎮的倍數）", "RdBu_r", -0.6, 0.6)]:
+for ax, col, title, cmap, vmin, vmax in [(axes[0], "exp", "只看房屋組成時的期望繼承占比", "Oranges", 0.03, 0.35), (axes[1], "u", "調整房屋組成後的鄉鎮偏離（繼承勝算相對一般鄉鎮的倍數）", "RdBu_r", -0.6, 0.6)]:
     main.plot(ax=ax, color="#eceef1", edgecolor="white", linewidth=0.15)
     main[main[col].notna()].plot(ax=ax, column=col, cmap=cmap, vmin=vmin, vmax=vmax, edgecolor="white", linewidth=0.15, legend=True, legend_kwds={"shrink": 0.45, "pad": 0.01})
     ax.set_axis_off(); ax.set_title(title, loc="left", fontsize=12)
