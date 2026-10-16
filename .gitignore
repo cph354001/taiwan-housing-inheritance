@@ -1,0 +1,9 @@
+raw/
+data/
+out/
+fig/
+external/
+scratch/
+__pycache__/
+*.pyc
+.DS_Store
