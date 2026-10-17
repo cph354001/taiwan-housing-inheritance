@@ -127,7 +127,7 @@ add(分析="樣本外預測（110–111 估計、預測 112）", 鄉鎮數=str(N
     主要限制="只含大鄉鎮；誤差以百分點計", 章節="§3.2、B.1（只留 ≥300 棟）", 程式="12_composition_vs_place.py、16_robustness_and_replication.py", 核對來源="重算；out/oos_prediction_112.csv 評估鄉鎮數")
 add(分析="穩健性：分母只留買賣＋繼承／排除離島／40 年以上 1–5 層／未滿 40 年／納入屋齡不明", 鄉鎮數=f"{N['rb_BD_only']}／{N['rb_no_islands']}／{N['rb_old_lowrise']}／{N['rb_under40']}／{N['rb_incl_unknown_age']}",
     資料期間="模擬 112 年", 建物條件=f"各子樣本內 ≥50 棟（納入屋齡不明者 {N['rb_incl_unknown_age_bld']:,} 棟）", 分子="模擬：繼承棟數", 分母="模擬：子樣本的棟數", 主要限制="子樣本不同，鄉鎮集合不同；與主設定比較時只取交集",
-    章節="B.1、§4.3/附錄 F（317）", 程式="16_robustness_and_replication.py", 核對來源="重算；out/robustness_place_effect.csv、robustness_include_unknown_age.csv")
+    章節="B.1、§4.3/附錄 E（317）", 程式="16_robustness_and_replication.py", 核對來源="重算；out/robustness_place_effect.csv、robustness_include_unknown_age.csv")
 add(分析="地方效果是否各類房屋一致", 鄉鎮數="／".join(f"{v}" for v in N["segments"].values()) + "（" + "、".join(N["segments"].keys()) + "）", 資料期間="模擬 112 年", 建物條件="兩類都 ≥300 棟", 分子="模擬：繼承棟數", 分母="模擬：B+C+D 棟數",
     主要限制="小樣本雜訊壓低相關", 章節="B.2", 程式="16_robustness_and_replication.py", 核對來源="out/place_effect_by_segment.csv")
 add(分析="地方效果與鄉鎮特徵、人口五等分、Moran's I", 鄉鎮數=f"{N['master_112']}（多變數迴歸 {N['correlates_multivar']}；地圖只繪本島，Moran 鄰接矩陣孤島 {N['moran_islands']} 個）", 資料期間="模擬 112 年屋主檔、人建地檔；112/6 戶籍人口",
@@ -164,7 +164,7 @@ md = ["# 分析樣本對照表（rev1016，審稿建議 15）", "", "鄉鎮數�
       "| " + " | ".join(cols) + " |", "|" + "|".join(["---"]*len(cols)) + "|"]
 md += ["| " + " | ".join(esc(r[c]) for c in cols) + " |" for r in R]
 md += ["", "## 人口五等分用的是三個不同的鄉鎮集合", "",
-       f"- §3.3、附錄 F（`population_quintiles.csv`）：{N['popq_312']} 個；§3.4 圖 7 右（`township_supply_sales_quintiles.csv`）：{N['popq_272']} 個；§3.5 老屋（`lvr_population_quintiles.csv`）：{N['popq_lvr']} 個（老屋周轉率以各組合計計算，組內含老屋很少的鄉鎮）。", "",
+       f"- §3.3、附錄 E（`population_quintiles.csv`）：{N['popq_312']} 個；§3.4 圖 7 右（`township_supply_sales_quintiles.csv`）：{N['popq_272']} 個；§3.5 老屋（`lvr_population_quintiles.csv`）：{N['popq_lvr']} 個（老屋周轉率以各組合計計算，組內含老屋很少的鄉鎮）。", "",
        "## 「建物棟數 × 10」的依據", ""]
 X = X10
 md += [f"- 手冊只寫「依 111 年屋主資料之整體結構，模擬約 10% 之樣本資料」，並給**持有紀錄**筆數：母體 10,766,461、模擬 1,076,646（本檔 111 年 {X['手冊']['本檔111年筆數']:,}），比值恰為 10.0%。手冊沒有母體建物總棟數；表 29（以建物數計算）只給占比。所以「建物 ×10」是由紀錄的 10% 推論而來，不是手冊直接給的。",

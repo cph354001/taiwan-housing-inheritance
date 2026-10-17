@@ -1,4 +1,4 @@
-"""附錄 E 的兩張表（輸出 Markdown，供報告直接引用）。"""
+"""附錄 D 的兩張表（輸出 Markdown，供報告直接引用）。"""
 import pandas as pd, numpy as np
 from common import *
 C = pd.read_csv(OUT/"real_rates_county_mean.csv").merge(pd.read_csv(OUT/"county_raw_vs_expected.csv"), left_on="county_name", right_on="county")
